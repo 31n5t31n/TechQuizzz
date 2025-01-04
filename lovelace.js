@@ -72,7 +72,7 @@ function startQuiz() {
   score = 0;
   currentQuestionIndex = 0;
   document.getElementById("score").innerText = score;
-  //document.getElementById("restart-button").style.display = "none";
+  document.getElementById("restart-button").style.display = "none";
   document.getElementById("next-button").style.display = "none";
   // Mélange et sélectionne 10 questions aléatoires
   selectedQuestions = questions.sort(() => Math.random() - 0.5).slice(0, 10);
@@ -137,6 +137,6 @@ function showFinalScore() {
   document.getElementById("next-button").style.display = "none";
   document.getElementById("restart-button").style.display = "block";
 }
-
+alert("Bienvenue sur le quiz !");
 // Lance le quiz dès le chargement de la page
 startQuiz();
