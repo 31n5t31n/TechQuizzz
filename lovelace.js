@@ -137,6 +137,6 @@ function showFinalScore() {
   document.getElementById("next-button").style.display = "none";
   document.getElementById("restart-button").style.display = "block";
 }
-alert("Bienvenue sur le quiz !");
+
 // Lance le quiz dès le chargement de la page
 startQuiz();
