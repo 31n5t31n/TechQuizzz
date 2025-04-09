@@ -1,8 +1,6 @@
-/* style.css */
-
 /* Styles de base pour le corps */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +10,12 @@ body {
   overflow: hidden;
   background-image: url(img/Download\ Halftone\ Comic\ green\ template\ concept\ for\ free.jpeg);
   background-size: cover;
+  background-position: center;
 }
 
 /* Container principal du quiz */
 .quiz-container {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: x-large;
+  font-size: 1.2rem;
   width: 90%;
   max-width: 800px;
   padding: 40px;
@@ -26,14 +24,14 @@ body {
   text-align: center;
   position: relative;
   color: #333;
+  background-color: rgba(255, 255, 255, 0.9);
   animation: fadeIn 0.8s ease-in-out;
 }
 
-
 .quiz-container h1 {
-  font-family: 'cooper black', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 50px;
+  font-size: 2.5rem;
   margin-bottom: 10px;
   color: #9a47b6;
 }
@@ -63,22 +61,19 @@ body {
 
 .answer-button {
   padding: 15px;
-  font-size: 18px;
+  font-size: 1rem;
   color: white;
   background-color: #ab32bd;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  font-family: 'Poppins', sans-serif;
 }
 
 .answer-button:hover {
-  background-color: rgb(255, 255, 255);
-  color: violet;
+  background-color: #9a47b6;
   transform: scale(1.05);
   font-weight: bold;
-  font-size: x-large;
 }
 
 .answer-button.correct {
@@ -97,22 +92,19 @@ button:disabled {
 /* Style du conteneur de score */
 .score-container {
   margin-top: 30px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 #next-button, #restart-button {
   padding: 12px 25px;
-  font-size: 21px;
+  font-size: 1rem;
   background-color: #fff;
-  color: rgb(142, 14, 133);
+  color: #9a47b6;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  display: inline-block;
 }
 
 #next-button:hover, #restart-button:hover {
@@ -127,22 +119,23 @@ button:disabled {
   to { opacity: 1; transform: translateY(0); }
 }
 
-#slogan{
-  font-size: x-large;
-  color: rgb(0, 0, 0);
-  font-family: magneto;
+#slogan {
+  font-size: 1.2rem;
+  color: #333;
+  font-style: italic;
 }
 
-#restart{
-  color: black;
-  text-decoration: dashed;
+#restart {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
 }
-#restart:hover{
+
+#restart:hover {
   color: #9a47b6;
-  text-decoration: overline;
+  text-decoration: underline;
   font-style: italic;
-  font-size: x-large;
-  transition: transform 0.3s, font-size 1s;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* Effet de transition pour les boutons */
