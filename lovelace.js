@@ -1,5 +1,7 @@
 // script.js
 
+// script.js
+
 // Liste de 100 questions
 const questions = [
   { "question": "Quel langage est considéré comme le premier langage de programmation ?", answers: ["Fortran", "Cobol", "Ada", "C"], correct: 0 },
@@ -48,39 +50,39 @@ const questions = [
   { "question": "Quel est l'objectif principal du langage de programmation Objective-C ?", "answers": ["Développement d'applications iOS et macOS", "Développement web", "Création de jeux vidéo", "Création de systèmes d'exploitation"], "correct": 0 },
   { "question": "Quel est le nom du langage créé par Google pour le développement d'applications mobiles ?", "answers": ["Go", "Dart", "Swift", "Kotlin"], "correct": 1 },
   { "question": "Quel est le langage de programmation principalement utilisé pour les applications de machine learning ?", "answers": ["C", "Java", "Python", "Ruby"], "correct": 2 },
-  { "question": "Dans le contexte de la programmation orientée objet, que signifie 'encapsulation' ?", "answers": ["Cacher les détails de l'implémentation d'une classe", "Permettre l'héritage entre classes", "Créer des objets immutables", "Gérer les erreurs dans le code"], "correct": 0 },
-  { "question": "Quelle est la principale fonction du langage Bash ?", "answers": ["Développement web", "Gestion de systèmes Unix", "Création de jeux vidéo", "Développement d'applications mobiles"], "correct": 1 },
-  { "question": "Quel est l'objectif principal du langage de programmation Kotlin ?", "answers": ["Développement Android", "Développement web", "Gestion de bases de données", "Création d'applications Windows"], "correct": 0 },
-  { "question": "Quel est l'acronyme de IDE ?", "answers": ["Integrated Development Environment", "International Development Environment", "Internal Development Environment", "Interactive Development Environment"], "correct": 0 },
-  { "question": "Quel est le rôle de la mémoire vive (RAM) dans un ordinateur ?", "answers": ["Stocker les programmes et données temporaires pendant l'exécution", "Stocker le système d'exploitation", "Exécuter les programmes", "Stocker les fichiers à long terme"], "correct": 0 },
-  { "question": "Quel est le langage de programmation de base utilisé dans les systèmes embarqués ?", "answers": ["C", "Python", "Java", "Swift"], "correct": 0 },
-  { "question": "Quel est le rôle du langage de programmation JavaScript dans un site web ?", "answers": ["Mettre en forme le contenu", "Ajouter des comportements dynamiques et interactifs", "Structurer le contenu", "Gérer les bases de données"], "correct": 1 },
-  { "question": "Quel est le but principal du langage de programmation Lua ?", "answers": ["Création de scripts pour des jeux vidéo", "Développement de sites web", "Création d'applications mobiles", "Développement d'applications serveur"], "correct": 0 },
-  { "question": "Quel est le nom de l'algorithme de tri le plus rapide dans les cas moyens ?", "answers": ["Tri à bulles", "Tri rapide", "Tri par insertion", "Tri par sélection"], "correct": 1 },
-  { "question": "Quel est le rôle d'un pointeur en langage C ?", "answers": ["Indiquer l'adresse mémoire d'une variable", "Assigner une valeur à une variable", "Définir la taille d'un tableau", "Créer une fonction"], "correct": 0 },
-  { "question": "Quelle est la différence entre un langage de programmation interprété et compilé ?", "answers": ["Un langage interprété est exécuté ligne par ligne, un langage compilé est converti en code machine", "Un langage interprété est plus rapide", "Un langage compilé est plus facile à utiliser", "Il n'y a pas de différence"], "correct": 0 },
-  { "question": "Quelle est la fonction d'un algorithme de recherche binaire ?", "answers": ["Trouver un élément dans une liste triée", "Trier une liste", "Compter les éléments d'une liste", "Créer une nouvelle liste"], "correct": 0 },
-  { "question": "Dans quel but les langages fonctionnels comme Haskell sont-ils utilisés ?", "answers": ["Gérer des systèmes d'exploitation", "Créer des applications mobiles", "Effectuer des calculs complexes de manière déclarative", "Développer des applications web"], "correct": 2 },
-  { "question": "Lequel de ces langages est un langage de programmation impératif ?", "answers": ["C", "SQL", "HTML", "JavaScript"], "correct": 0 }
+  { "question": "Dans le contexte de la programmation orientée objet, que signifie 'encapsulation' ?", "answers": ["Protéger les données en les cachant à l'extérieur de la classe", "Créer une nouvelle classe", "Hériter d'une classe parent", "Supprimer une classe"], "correct": 0 }
 ];
+
 
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedQuestions = [];
 
+// Démarre le quiz
 function startQuiz() {
   score = 0;
   currentQuestionIndex = 0;
   document.getElementById("score").innerText = score;
   document.getElementById("restart-button").style.display = "none";
   document.getElementById("next-button").style.display = "none";
+  
   // Mélange et sélectionne 10 questions aléatoires
-  selectedQuestions = questions.sort(() => Math.random() - 0.5).slice(0, 10);
+  selectedQuestions = shuffle(questions).slice(0, 10);
   
   showQuestion();
   updateProgressBar();
 }
 
+// Mélange un tableau
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Affiche la question et les réponses
 function showQuestion() {
   const question = selectedQuestions[currentQuestionIndex];
   document.getElementById("question-text").innerText = question.question;
@@ -97,9 +99,11 @@ function showQuestion() {
   });
 }
 
+// Sélection d'une réponse
 function selectAnswer(selectedIndex, button) {
   const question = selectedQuestions[currentQuestionIndex];
   
+  // Ajoute les styles en fonction de la réponse
   if (selectedIndex === question.correct) {
     score++;
     document.getElementById("score").innerText = score;
@@ -110,10 +114,12 @@ function selectAnswer(selectedIndex, button) {
     correctButton.classList.add('correct');
   }
   
+  // Désactive tous les boutons de réponse
   document.querySelectorAll('#answer-buttons button').forEach(btn => btn.disabled = true);
   document.getElementById("next-button").style.display = "block";
 }
 
+// Passe à la question suivante
 function nextQuestion() {
   currentQuestionIndex++;
   
@@ -126,12 +132,14 @@ function nextQuestion() {
   }
 }
 
+// Met à jour la barre de progression
 function updateProgressBar() {
   const progressBar = document.getElementById("progress-bar");
   const progressPercentage = ((currentQuestionIndex + 1) / selectedQuestions.length) * 100;
   progressBar.style.width = progressPercentage + '%';
 }
 
+// Affiche le score final
 function showFinalScore() {
   document.getElementById("question-container").innerHTML = `<h2>Quiz terminé !</h2><p>Score final : ${score} / ${selectedQuestions.length}</p>`;
   document.getElementById("next-button").style.display = "none";
