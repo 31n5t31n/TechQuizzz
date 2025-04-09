@@ -8,7 +8,8 @@ body {
   margin: 0;
   color: #ffffff;
   overflow: hidden;
-  background-image: url(img/Download\ Halftone\ Comic\ green\ template\ concept\ for\ free.jpeg);
+ /* background-color: #000000;*/
+  background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
   background-size: cover;
   background-position: center;
 }
@@ -23,8 +24,8 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
   position: relative;
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.9);
+  color: #00FF00;
+  background-color: rgba(0, 0, 0, 0.8);
   animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -33,12 +34,18 @@ body {
   font-weight: 600;
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #9a47b6;
+  color: #00FF00;
+  border-right: 4px solid #00FF00;
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
 }
 
+/* Progress bar */
 #progress-bar-container {
   width: 100%;
-  background-color: #ddd;
+  background-color: #333;
   border-radius: 10px;
   overflow: hidden;
   margin: 20px 0;
@@ -46,7 +53,7 @@ body {
 
 #progress-bar {
   height: 20px;
-  background-color: #c352bb;
+  background-color: #00FF00;
   width: 0%;
   transition: width 0.4s ease;
 }
@@ -63,17 +70,19 @@ body {
   padding: 15px;
   font-size: 1rem;
   color: white;
-  background-color: #ab32bd;
+  background-color: #333;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
 }
 
 .answer-button:hover {
-  background-color: #9a47b6;
+  background-color: #00FF00;
   transform: scale(1.05);
   font-weight: bold;
+  animation: glitch 0.3s infinite;
 }
 
 .answer-button.correct {
@@ -89,28 +98,40 @@ button:disabled {
   opacity: 0.7;
 }
 
+@keyframes glitch {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, 2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
 /* Style du conteneur de score */
 .score-container {
   margin-top: 30px;
   font-size: 1rem;
+  color: #00FF00;
 }
 
+/* Boutons Next et Restart */
 #next-button, #restart-button {
   padding: 12px 25px;
   font-size: 1rem;
-  background-color: #fff;
-  color: #9a47b6;
+  background-color: #00FF00;
+  color: #000000;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
 }
 
 #next-button:hover, #restart-button:hover {
-  background-color: #be2ae3;
-  color: #fff;
+  background-color: #333;
+  color: #00FF00;
   transform: scale(1.05);
+  animation: glitch 0.3s infinite;
 }
 
 /* Effet d’apparition */
@@ -119,20 +140,30 @@ button:disabled {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Slogan ou tagline */
 #slogan {
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.5rem;
+  color: #00FF00;
   font-style: italic;
+  text-align: center;
+  animation: typewriter 4s steps(40) 1s forwards;
 }
 
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Lien de redémarrage */
 #restart {
-  color: #333;
+  color: #00FF00;
   text-decoration: none;
   font-weight: bold;
 }
 
 #restart:hover {
-  color: #9a47b6;
+  color: #000000;
+  background-color: #00FF00;
   text-decoration: underline;
   font-style: italic;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -141,4 +172,101 @@ button:disabled {
 /* Effet de transition pour les boutons */
 .answer-button, #next-button, #restart-button {
   transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Effet Matrix (arrière-plan animé) */
+.matrix-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  color: #00FF00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  opacity: 0.1;
+  z-index: -1;
+  overflow: hidden;
+  animation: matrix 3s linear infinite;
+}
+
+@keyframes matrix {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Adaptation pour les appareils mobiles */
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    padding: 20px;
+  }
+
+  .quiz-container h1 {
+    font-size: 2rem;
+  }
+
+  .answer-button {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  #next-button, #restart-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  #progress-bar-container {
+    height: 15px;
+  }
+
+  #progress-bar {
+    height: 15px;
+  }
+
+  .score-container {
+    font-size: 1rem;
+  }
+
+  #slogan {
+    font-size: 1.2rem;
+  }
+}
+
+/* Adaptation pour les très petits écrans (mobiles en portrait) */
+@media screen and (max-width: 480px) {
+  .quiz-container {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .quiz-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .answer-button {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  #next-button, #restart-button {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+  }
+
+  #progress-bar-container {
+    height: 12px;
+  }
+
+  #progress-bar {
+    height: 12px;
+  }
+
+  .score-container {
+    font-size: 0.9rem;
+  }
+
+  #slogan {
+    font-size: 1rem;
+  }
 }
