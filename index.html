@@ -8,25 +8,45 @@
   <link rel="stylesheet" href="lovelace.css">
   <meta name="description" content="TechQuizz propose des quiz interactifs sur la technologie pour tester vos connaissances. Découvrez nos quiz en ligne !">
   <meta name="google-site-verification" content="0OMeItcwE7iryQnN5tHfRK1kDKibTcgYGBmHYXSdIR4" />
+  
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="TechQuizz - Quiz en ligne sur la technologie">
+  <meta property="og:description" content="TechQuizz propose des quiz interactifs sur la technologie pour tester vos connaissances. Découvrez nos quiz en ligne !">
+  <meta property="og:image" content="URL_de_l_image_de_partage">
+  <meta property="og:url" content="URL_de_ton_site">
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:title" content="TechQuizz - Quiz en ligne sur la technologie">
+  <meta name="twitter:description" content="TechQuizz propose des quiz interactifs sur la technologie pour tester vos connaissances. Découvrez nos quiz en ligne !">
+  <meta name="twitter:image" content="URL_de_l_image_de_partage">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="quiz-container">
-    <h1>TechQuizz</h1> <hr>
+    <h1>TechQuizz</h1>
+    <hr>
     <p id="slogan">eat🍜 code👨🏾‍💻 sleep🛏️ repeat🔁</p>
+
     <div id="progress-bar-container">
       <div id="progress-bar"></div>
     </div>
+
     <div id="question-container">
       <p id="question-text">Question ici</p>
       <div id="answer-buttons" class="btn-container"></div>
     </div>
+
     <div class="score-container">
-      <a id="restart" href="index.html">RECOMMENCER</a>
-      <p>Score: <span id="score">0</span></p>
+      <button id="restart" onclick="window.location.href='index.html'">RECOMMENCER</button>
+      <p>Score: <span id="score" aria-live="polite">0</span></p>
       <button id="next-button" onclick="nextQuestion()">Suivant</button>
-     <!-- <button id="restart-button" onclick="startQuiz()" style="display: none;">Recommencer</button>-->
+      <!-- <button id="restart-button" onclick="startQuiz()" style="display: none;">Recommencer</button>-->
     </div>
   </div>
-  <script src="lovelace.js"></script>
+
+  <script src="lovelace.js" async></script>
 </body>
 </html>
